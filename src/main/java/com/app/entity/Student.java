@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sun.istack.NotNull;
 
 @Entity
 public class Student {
@@ -23,6 +24,19 @@ public class Student {
 	private int duefees;
 	private long contactno;
 	private String address;
+	
+	@NotNull
+	private String password;
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	
 	
 	public Student(int studentId) {
 		// TODO Auto-generated constructor stub

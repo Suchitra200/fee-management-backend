@@ -47,8 +47,8 @@ public class AdminController {
 	//	  service.sendSimpleEmail(emailId, "Logged in at" + service.getCurrentDate(),
 	//	  "Logging Information");
 		 
-		SmsRequest request = new SmsRequest("8147668398", "Hello Tameem");
-		SmsSender.sendSms(request);
+	//	SmsRequest request = new SmsRequest("8147668398", "Hello Tameem");
+	//	SmsSender.sendSms(request);
 		
 		return adminRepo.findByEmailIdAndPassword(emailId,password);
 		

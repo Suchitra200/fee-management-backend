@@ -14,22 +14,16 @@ import org.springframework.stereotype.Repository;
 import com.app.entity.Student;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student, Integer>{
-	
-	
+public interface StudentRepository extends JpaRepository<Student, Integer> {
+
 	@Query("Select s from Student s where duefees >0")
 	List<Student> findByDueFee();
-	
+
 	@Query("Select s from Student s ")
 	List<Student> findAllStudentDeatils();
 
-	
-
 	Optional<Student> findByStudentId(Integer studentId);
 
+	Student findByEmailIdAndPassword(String emailId, String password);
 
-
-	
-
-	
 }
