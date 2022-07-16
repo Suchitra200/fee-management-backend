@@ -19,8 +19,10 @@ import com.app.config.SmsRequest;
 import com.app.config.SmsSender;
 import com.app.entity.Accountant;
 import com.app.entity.Admin;
+import com.app.entity.Teacher;
 import com.app.repository.AccountantRepository;
 import com.app.repository.AdminRepository;
+import com.app.repository.TeacherRepository;
 import com.app.service.EmailSenderService;
 
 @Transactional 
@@ -35,6 +37,9 @@ public class AdminController {
 
 	@Autowired
 	private AccountantRepository accountantRepo;
+	
+	@Autowired
+	private TeacherRepository teacherRepo;
 	
 	@Autowired
 	private SmsSender SmsSender;
@@ -60,12 +65,21 @@ public class AdminController {
 		accountantRepo.save(accountant);
 		return accountant;
 	}
+	
+
+	@PostMapping("/admin/addTeacher")
+	public void addTeacher(@RequestBody Teacher teacher) {
+		teacherRepo.save(teacher);
+		
+	}
 
 	
 	@GetMapping("/admin/viewaccountant")
 	public List<Accountant> viewAccountant() {
 		return accountantRepo.findAll();
 	}
+	
+	
 	
 	 @Modifying
 	 @PutMapping("/adminlogin/update/{accountantId}")
