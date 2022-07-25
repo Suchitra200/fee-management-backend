@@ -6,15 +6,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.app.config.StringPrefixedSequenceIdGenerator;
 import com.sun.istack.NotNull;
 
 @Entity
 public class Student {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int studentId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "book_seq")
+    @GenericGenerator(
+        name = "book_seq", 
+        strategy = "com.app.config.StringPrefixedSequenceIdGenerator", 
+        parameters = {
+            @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
+            @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "a00")
+        })
+	private String studentId;
 	private String studentName;
 	private String gender;
 	private String emailId;
@@ -38,7 +48,7 @@ public class Student {
 
 	
 	
-	public Student(int studentId) {
+	public Student(String studentId) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.studentId = studentId;
@@ -49,13 +59,13 @@ public class Student {
 	};
 
 
-	public int getStudentId() {
+	public String getStudentId() {
 		return studentId;
 	}
 
 
-	public void setStudentId(int studentId) {
-		this.studentId = studentId;
+	public void setStudentId(String studentId2) {
+		this.studentId = studentId2;
 	}
 
 

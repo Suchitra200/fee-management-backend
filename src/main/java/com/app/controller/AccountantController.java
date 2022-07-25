@@ -44,7 +44,7 @@ public class AccountantController {
 
 	
 	@GetMapping("/accountantlogin/{studentId}")
-	public Optional<Student> getStudentById( @PathVariable Integer studentId) {
+	public Optional<Student> getStudentById( @PathVariable String studentId) {
 		return studentRepo.findByStudentId(studentId);
 	}
 
@@ -60,7 +60,7 @@ public class AccountantController {
 	
 	@Modifying
 	@PutMapping("/accountantlogin/update/{studentId}")
-	public Student updateStudentDetails(@RequestBody Student student, @PathVariable Integer studentId) {
+	public Student updateStudentDetails(@RequestBody Student student, @PathVariable String studentId) {
 		student.setStudentId(studentId);
 		studentRepo.save(student);
 		return student;
@@ -68,7 +68,7 @@ public class AccountantController {
 	
 	
 	@DeleteMapping("/accountantlogin/delete/{studentId}")
-	public String deleteStudent( @PathVariable Integer studentId) {
+	public String deleteStudent( @PathVariable String studentId) {
 		studentRepo.deleteById( studentId );
 		return "DeletedSuccessfully";
 	}

@@ -1,54 +1,79 @@
 package com.app.entity;
-public class Order {
 
-	private double price;
-	private String currency;
-	private String method;
-	private String intent;
-	private String description;
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	public String getCurrency() {
-		return currency;
-	}
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-	public String getMethod() {
-		return method;
-	}
-	public void setMethod(String method) {
-		this.method = method;
-	}
-	public String getIntent() {
-		return intent;
-	}
-	public void setIntent(String intent) {
-		this.intent = intent;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Order(double price, String currency, String method, String intent, String description) {
-		super();
-		this.price = price;
-		this.currency = currency;
-		this.method = method;
-		this.intent = intent;
-		this.description = description;
-	}
-	public Order() {
-		
-	}
-	
-	
-	
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "orderr")
+public class Order implements Serializable {
+ 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 65981149772133526L;
+ 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+ 
+    private Long userId;
+ 
+    private String razorpayPaymentId;
+ 
+    private String razorpayOrderId;
+ 
+    private String razorpaySignature;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public String getRazorpayPaymentId() {
+		return razorpayPaymentId;
+	}
+
+	public void setRazorpayPaymentId(String razorpayPaymentId) {
+		this.razorpayPaymentId = razorpayPaymentId;
+	}
+
+	public String getRazorpayOrderId() {
+		return razorpayOrderId;
+	}
+
+	public void setRazorpayOrderId(String razorpayOrderId) {
+		this.razorpayOrderId = razorpayOrderId;
+	}
+
+	public String getRazorpaySignature() {
+		return razorpaySignature;
+	}
+
+	public void setRazorpaySignature(String razorpaySignature) {
+		this.razorpaySignature = razorpaySignature;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+    
+    
+    
+ 
 }
